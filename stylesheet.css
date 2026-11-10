@@ -1,0 +1,56 @@
+body{
+    background-image: linear-gradient(rgb(241, 112, 207),rgb(231, 74, 255));
+    margin: 0;
+}
+
+header{
+    margin: 8px;
+}
+h1{
+    margin-bottom: 3px;
+}
+#tagline{
+    font-style: italic;
+    margin-top: 1px;
+}
+main{
+    margin: 8px;
+}
+figure{
+    width: 40vw;
+    min-width: 300px;
+    display: inline-block;
+}
+figcaption{
+    background-color: rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-style: bold;
+    color: black;
+}
+img{width: 100%;}
+#dvdlogo{
+    width: 200px;
+    top: 0px;
+    position: fixed;
+    animation: updown 3.7s infinite linear, leftright 5.2s infinite linear;
+    animation-direction: alternate;
+}
+@keyframes updown {
+    from{top: 0%;}
+    to{top: calc(100% - 88px); }/*hardcoded the width and height of the image, not very pretty but it works*/
+}
+@keyframes leftright {
+    from{left: 0%;}
+    to{left: calc(100% - 200px); }
+}
+
+
+footer{
+    background-color: black;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 49% 49%;
+}
+.footertext{
+    color: aliceblue;
+}
