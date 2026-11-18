@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face{
+    font-family: "Lexend Deca";
+    src: url(Fonts/LexendDeca-VariableFont_wght.ttf) format("truetype");
+    font-weight: 400;
+}
+@font-face{
+    font-family: "Big Shoulders Display";
+    src: url(Fonts/BigShoulders-VariableFont_opsz\,wght.ttf) format("truetype");
+    font-weight: 700;
+}
+body{
+    background-color: hsl(0, 0%, 95%);
+}
+p {
+    font-size: 15px;
+    font-family: "Lexend Deca";
+    color: hsla(0, 0%, 100%, 0.75);
+}
+h2{
+    font-size: 35px;
+    font-family: "Big Shoulders Display";
+    color:  hsl(0, 0%, 95%);
+}
+#cars-container{
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 60%;
+    min-width: 800px;
+    margin: auto;
+}
+.car{
+ padding: 30px;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ gap: 20px;
+ height: 350px;
+}
+.car-icon{
+    width: 64px;
+}
+.car-btn{
+    color: inherit;
+    background-color: hsl(0, 0%, 95%);
+    font-size: 15px;
+    font-family: "Lexend Deca";
+    padding: 0px 30px;
+    height: 40px;
+    border-radius: 20px;
+    width: fit-content;
+    border: 0;
+    margin-top: auto;
+}
+#sedan{
+    background-color: hsl(31, 77%, 52%);
+    color: hsl(31, 77%, 52%);
+}
+#suv{
+    background-color: hsl(184, 100%, 22%);
+    color: hsl(184, 100%, 22%);
+}
+#luxury{
+    background-color: hsl(179, 100%, 13%);
+    color: hsl(179, 100%, 13%);
+}
