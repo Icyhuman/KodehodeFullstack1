@@ -51,7 +51,7 @@ function numCheck(num) {
   //Starting with some basic error handling in case the input isn't a number
   if (typeof num != "number") {
     console.log("Error! Given data is not a number. Attempting conversion.");
-    num = Number(num); //If the user mistakenly gave the number in string form, we fix it here.
+    num = Number(num); //If the user mistakenly gave the number in string or array form, we fix it here.
     if (Number.isNaN(num)) {
       console.warn("Conversion failed");
       return "Ikke tall";
@@ -66,12 +66,12 @@ function numCheck(num) {
 }
 
 //TESTING
-test(numCheck(7), "Oddetall");
+test(numCheck(8), "Partall");
+test(numCheck("8"), "Partall");
+test(numCheck([8]), "Partall");
 test(numCheck(493), "Oddetall");
 test(numCheck(800), "Partall");
-test(numCheck("7"), "Oddetall");
 test(numCheck("Crazy hamburger"), "Ikke tall");
-test(numCheck([7]), "Oddetall");
 
 /******************************************************************************
 2.
@@ -171,9 +171,12 @@ Eksempel 2: ["En", "To", "Tre", "Fire", "Fem", "Seks"] skal returnere
 ******************************************************************************/
 
 // Skriv koden for oppgave 4 her
+//We simply use the slice method to return a slice of the array with first and last value gone
 const arraytrim = (array) => {
   return array.slice(1, -1);
 };
+
+//Sorry the tests look terrible, Prettier insists that this is the ideal way to display these arrays :(
 arraytest(arraytrim(["Rød", "Grønn", "Blå", "Gul"]), ["Grønn", "Blå"]);
 arraytest(arraytrim(["En", "To", "Tre", "Fire", "Fem", "Seks"]), [
   "To",
@@ -258,15 +261,24 @@ Ekstra utfordring: Lag et nytt array som kun inkluderer elementer som inneholder
 ******************************************************************************/
 
 // Skriv koden for oppgave 6 her
+// Helper function for the bonus task. Uses toLowerCase() to avoid having to check for both "e" and "E"
+const eCheck = (string) => {
+  return string.toLowerCase().includes("e");
+};
+
+// Changed to multiple returns to accomodate the bonus task. Original solution accessed with arrayManipulation()[0]
 function arrayManipulation(array) {
-  array.shift();
-  array[array.indexOf("Viskelær")] = "Linjal";
-  array.splice(array.indexOf("Penn"), 2, "Markeringspenn");
-  let string = array.join("|");
-  return string;
+  //Filter the array with the eCheck helper. Filter makes a shallow copy so later changes to the original also apply to this array
+  let eArray = array.filter(eCheck);
+  array.shift(); //Remove "Bok"
+  array[array.indexOf("Viskelær")] = "Linjal"; //Find "Viskelær" and replace it
+  array.splice(array.indexOf("Penn"), 2, "Markeringspenn"); //Remove the 2 items in favor of "Markeringspenn"
+  let string = array.join("|"); //Join the whole thing to a string
+  return [string, eArray];
 }
 
-console.log(arrayManipulation(items));
+test(arrayManipulation(items)[0], "Markeringspenn|Linjal|Blyant|Markør");
+arraytest(arrayManipulation(items)[1], ["Markeringspenn"]);
 
 /******************************************************************************
 7.
