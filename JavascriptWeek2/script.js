@@ -305,6 +305,24 @@ Eksempel 4: (["En", "To", "Tre"], "To") --> ["En", "Tre"]
 ******************************************************************************/
 
 // Skriv koden for oppgave 7 her
+function arrayCheck(array, string) {
+  if (array.includes(string)) {
+    //If included, remove using splice
+    array.splice(array.indexOf(string), 1);
+  } else {
+    //Else add the string
+    array.push(string);
+  }
+  return array;
+}
+
+arraytest(arrayCheck(["Rød", "Grønn"], "Blå"), ["Rød", "Grønn", "Blå"]);
+arraytest(arrayCheck(["Rød", "Grønn", "Blå"], "Grønn"), ["Rød", "Blå"]);
+arraytest(arrayCheck(["Spaghetti", "Meatballs"], "Tomato sauce"), [
+  "Spaghetti",
+  "Meatballs",
+  "Tomato sauce",
+]);
 
 /******************************************************************************
 8.
@@ -333,3 +351,30 @@ Returner "😎Kun primitive verdier😎".
 ******************************************************************************/
 
 // Skriv koden for oppgave 8 her
+function smile(input) {
+  switch (
+    typeof input //Switch converts the value based on its type. Cases are self explanatory
+  ) {
+    case "string":
+      break; //Break avoids executing later cases
+    case "number":
+      input = input.toString();
+      break;
+    case "boolean":
+      if (input) {
+        input = "Ja";
+      } else {
+        input = "Slapp av";
+      }
+      break;
+    default:
+      input = "Kun primitive verdier";
+  }
+  return "😎" + input + "😎"; //Add smileys and return
+}
+
+test(smile(69420), "😎69420😎");
+test(smile(true), "😎Ja😎");
+test(smile(false), "😎Slapp av😎");
+test(smile("holy moly"), "😎holy moly😎");
+test(smile(["eggs", "milk", "ham"]), "😎Kun primitive verdier😎");
